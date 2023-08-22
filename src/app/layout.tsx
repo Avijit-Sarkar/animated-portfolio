@@ -35,7 +35,10 @@ export default function RootLayout({
         cousine.variable
       )}
     >
-      <body className="min-h-screen bg-black antialiased">
+      <body
+        suppressHydrationWarning={true}
+        className="min-h-screen bg-black antialiased"
+      >
         <Navbar />
         {children}
       </body>
