@@ -30,16 +30,14 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "bg-background text-foreground antialiased dark",
+        "bg-black text-foreground antialiased dark",
         inter.variable,
         cousine.variable
       )}
     >
-      <body className="min-h-screen bg-background antialiased">
+      <body className="min-h-screen bg-black antialiased">
         <Navbar />
-        <div className="container max-w-7xl mx-auto h-full pt-12 md:pt-0">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

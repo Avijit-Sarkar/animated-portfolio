@@ -1,9 +1,30 @@
-import React from "react";
+"use client";
+import { useScroll, useTransform, motion } from "framer-motion";
+import React, { useRef } from "react";
 
 const Hero = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["end end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const position = useTransform(scrollYProgress, (pos) => {
+    return pos === 1 ? "relative" : "fixed";
+  });
+
   return (
-    <section className="relative mb-[8rem] h-screen py-16 text-white before:pointer-events-none before:fixed before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),_var(--color-secondary)_0%,_transparent_100%)] before:opacity-40">
-      <div className="container mx-auto flex md:flex-row flex-col items-center">
+    <motion.section
+      style={{ opacity }}
+      ref={targetRef}
+      className="relative mb-[8rem] h-screen py-16 text-white before:pointer-events-none before:fixed before:inset-0 before:z-0 before:bg-[radial-gradient(circle_farthest-side_at_var(--x,_100px)_var(--y,_100px),_var(--color-secondary)_0%,_transparent_100%)] before:opacity-40"
+    >
+      <motion.div
+        style={{ scale, position }}
+        className="z-10 flex flex-col container inset-x-0 items-center"
+      >
         <div className="mx-auto max-w-2xl">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6  ring-1 ring-gray-100/10 hover:ring-gray-100/20">
@@ -36,8 +57,8 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
