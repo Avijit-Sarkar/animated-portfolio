@@ -19,8 +19,8 @@ const animationOrder = {
   createBranchEnd: 0.7,
   createBranchFadeInStart: 0.8,
   createBranchFadeInEnd: 0.85,
-  endTextFadeInStart: 0.95,
-  endTextFadeInEnd: 1,
+  endTextFadeInStart: 0.8,
+  endTextFadeInEnd: 0.95,
 };
 
 const About = () => {
@@ -125,8 +125,8 @@ const About = () => {
     ["4rem", "0rem", "-4rem"]
   );
 
-  const newBranchOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
-  const newBranchOpacity2 = useTransform(scrollYProgress, [0.67, 1], [0, 1]);
+  const newBranchOpacity = useTransform(scrollYProgress, [0.85, 0.9], [0, 1]);
+  const newBranchOpacity2 = useTransform(scrollYProgress, [0.67, 0.9], [0, 1]);
 
   const endTextOpacity = useTransform(
     scrollYProgress,
