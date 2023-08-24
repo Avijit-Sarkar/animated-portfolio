@@ -1,6 +1,7 @@
 import About from "@/sections/About";
 import Collaboration from "@/sections/Collaboration";
 import Hero from "@/sections/Hero";
+import Services from "@/sections/Services";
 import Streamlined from "@/sections/Streamlined";
 import Image from "next/image";
 
@@ -12,6 +13,7 @@ export default function Home() {
         <Collaboration />
         <About />
         <Streamlined />
+        <Services />
       </div>
     </main>
   );

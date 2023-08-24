@@ -3,7 +3,7 @@ import { stylesWithCssVar } from "@/lib/motion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const Streamlined = () => {
+const Services = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -20,7 +20,7 @@ const Streamlined = () => {
   );
   const finalTextOpacity = useTransform(
     scrollYProgress,
-    [0.7, 0.71, 0.72, 0.75, 0.8, 0.9],
+    [0.7, 0.71, 0.72, 0.75, 0.8, 1],
     [0, 0.3, 0.6, 1, 1, 0]
   );
 
@@ -35,7 +35,7 @@ const Streamlined = () => {
         "--opacity-border": opacityBorder,
       })}
       ref={targetRef}
-      className="mt-[50vh] flex h-[500vh] items-start justify-start"
+      className="flex h-[400vh] items-start justify-start"
     >
       <div className="sticky top-1/2 left-1/2 min-h-[50rem] min-w-[50rem] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap before:absolute before:inset-0 before:scale-[var(--scale)]  before:opacity-[var(--opacity-border)]">
         <motion.p
@@ -71,4 +71,4 @@ const Streamlined = () => {
   );
 };
 
-export default Streamlined;
+export default Services;
