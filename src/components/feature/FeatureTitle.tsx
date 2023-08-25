@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFeatureStore } from "./store";
 
 type Props = {
@@ -16,19 +16,12 @@ export const FeatureTitle = ({ children, id }: Props) => {
   const setInViewFeature = useFeatureStore((state) => state.setInviewFeature);
   const inViewFeature = useFeatureStore((state) => state.inViewFeature);
 
-  const soundEffect = new Audio("/scroll-click.mp3");
-
-  const playSoundEffect = () => {
-    soundEffect.play();
-  };
-
   useEffect(() => {
     if (isInView) {
       setInViewFeature(id);
-      playSoundEffect(); // Play the sound effect when the title changes color
     }
     if (!isInView && inViewFeature === id) setInViewFeature(null);
-  }, [isInView, id, setInViewFeature, inViewFeature, playSoundEffect]);
+  }, [isInView, id, setInViewFeature, inViewFeature]);
 
   return (
     <p

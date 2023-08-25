@@ -16,6 +16,9 @@ const Collaboration = () => {
   const position = useTransform(scrollYProgress, (pos) => {
     return pos <= 0.4 ? "#0d0d0d" : "#000000";
   });
+  const position2 = useTransform(scrollYProgress, (pos) => {
+    return pos <= 0.1 ? "0 -5px 140px 20px #1efeb24d" : "";
+  });
 
   return (
     <section className="relative z-10 mt-[-40vh] h-[400vh]">
@@ -25,8 +28,8 @@ const Collaboration = () => {
             <motion.div style={{ scale, opacity }} className="origin-top">
               <div className="h-[50vh]  w-[50vw]">
                 <motion.div
-                  style={{ backgroundColor: position }}
-                  className="h-full rounded-md transition-colors ease-in-out"
+                  style={{ backgroundColor: position, boxShadow: position2 }}
+                  className="h-full rounded-md transition-all ease-in-out"
                 >
                   <motion.div
                     style={{ opacity: fadeOut }}
