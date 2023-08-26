@@ -1,4 +1,5 @@
 import About from "@/sections/About";
+import Carosul from "@/sections/Carosul";
 import Collaboration from "@/sections/Collaboration";
 import Hero from "@/sections/Hero";
 import Services from "@/sections/Services";
@@ -14,6 +15,7 @@ export default function Home() {
         <About />
         <Streamlined />
         <Services />
+        <Carosul />
       </div>
     </main>
   );
