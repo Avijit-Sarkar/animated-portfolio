@@ -1,40 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import Cards from "@/components/Cards";
+import { CardType } from "@/lib/cards";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-
-const images = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1691081612638-24fa0b92219a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1692818667582-9df06eb3a4c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1682687220801-eef408f95d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1691335799851-ea2799a51ff0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1386&q=80",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1690900034882-4d8dccea7299?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1682686580433-2af05ee670ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-  },
-];
 
 const Carosul = () => {
   const [width, setWidth] = useState(0);
@@ -59,22 +28,23 @@ const Carosul = () => {
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
-          className="flex"
+          className="flex gap-6  p-10 "
         >
-          {images.map((image) => {
+          {Cards.map((image) => {
             return (
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.8 }}
+              <div
                 key={image.id}
-                className="h-[35rem] min-w-[25rem] p-10 pointer-events-auto"
+                className="group pointer-events-auto relative h-[30rem] min-w-[25rem] overflow-hidden rounded-lg"
               >
-                <img
-                  className="w-full h-full rounded-[2rem]"
-                  src={image.image}
-                  alt=""
-                />
-              </motion.div>
+                <div
+                  style={{
+                    backgroundImage: `url(${image.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                  className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+                ></div>
+              </div>
             );
           })}
         </motion.div>

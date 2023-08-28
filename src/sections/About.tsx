@@ -48,7 +48,7 @@ const About = () => {
       animationOrder.showLoadingScreenEnd,
       animationOrder.createBranchStart,
     ],
-    [3, 1, 1, 0.5]
+    [3, 1, 1, 0.7]
   );
   const x = useTransform(
     scrollYProgress,
@@ -63,28 +63,7 @@ const About = () => {
       animationOrder.showLoadingScreenEnd,
       animationOrder.createBranchEnd,
     ],
-    ["50%", "50%", "55%", "-50%", "-50%", "-55%", "0%", "0%", "-10%"]
-  );
-
-  const loadingScreenOpacity = useTransform(
-    scrollYProgress,
-    [
-      animationOrder.showLoadingScreenStart,
-      animationOrder.showLoadingScreenEnd,
-    ],
-    [0, 1]
-  );
-
-  const loadingScreenscale = useTransform(
-    scrollYProgress,
-    [animationOrder.createBranchStart, animationOrder.createBranchEnd],
-    [1, 0.5]
-  );
-
-  const loadingScreenimage = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", "45%"]
+    ["50%", "50%", "55%", "-50%", "-50%", "-55%", "0%", "0%", "27%"]
   );
 
   const paragraph1Opacity = useTransform(
@@ -125,20 +104,11 @@ const About = () => {
     ["4rem", "0rem", "-4rem"]
   );
 
-  const newBranchOpacity = useTransform(scrollYProgress, [0.85, 0.9], [0, 1]);
-  const newBranchOpacity2 = useTransform(scrollYProgress, [0.67, 0.9], [0, 1]);
+  const newBranchOpacity2 = useTransform(scrollYProgress, [0.67, 0.8], [0, 1]);
 
-  const endTextOpacity = useTransform(
-    scrollYProgress,
-    [animationOrder.endTextFadeInStart, animationOrder.endTextFadeInEnd],
-    [0, 1]
-  );
+  const endTextOpacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
 
-  const endTexty = useTransform(
-    scrollYProgress,
-    [animationOrder.endTextFadeInStart, animationOrder.endTextFadeInEnd],
-    ["4rem", "0rem"]
-  );
+  const endTexty = useTransform(scrollYProgress, [0.8, 1], ["4rem", "0rem"]);
 
   const position = useTransform(scrollYProgress, (pos) =>
     pos >= 1 ? "relative" : "fixed"
@@ -150,7 +120,7 @@ const About = () => {
 
   return (
     <section ref={targetRef}>
-      <div className="relative h-[800vh]">
+      <div className="relative h-[500vh]">
         <div className="sticky top-1/2 flex origin-center -translate-y-1/2 justify-center">
           <motion.div
             className="translate-x-centered-offset absolute left-1/2 top-1/2 flex w-[50vw] -translate-y-1/2 scale-[var(--scale)] flex-col items-center justify-center "
@@ -173,40 +143,7 @@ const About = () => {
             />
             <motion.span
               className="mt-5 block text-2xl text-white"
-              style={{ opacity: newBranchOpacity }}
-            >
-              <GitBranchIcon className="mr-3 inline-block h-12 w-12" /> Frontend
-              {`FYI's branch`}
-            </motion.span>
-          </motion.div>
-          <motion.div
-            className="translate-x-centered-offset absolute left-1/2 top-1/2 flex w-[50vw] -translate-y-1/2 scale-[var(--scale)] flex-col items-center justify-center"
-            style={stylesWithCssVar({
-              opacity: loadingScreenOpacity,
-              "--x": loadingScreenimage,
-              "--scale": loadingScreenscale,
-            })}
-          >
-            {/* <img
-              src="https://scroll-animations-with-framer-motion.vercel.app/loading-screen.svg"
-              className="h-auto w-full"
-              alt="loading-screen"
-            /> */}
-            <motion.div
-              style={{
-                opacity: newBranchOpacity2,
-              }}
-              className="inset-0"
-            >
-              <img
-                src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-                className="h-auto w-full rounded-md"
-                alt="main-image"
-              />
-            </motion.div>
-            <motion.span
-              className="mt-5 block text-2xl text-white"
-              style={{ opacity: newBranchOpacity }}
+              style={{ opacity: newBranchOpacity2 }}
             >
               <GitBranchIcon className="mr-3 inline-block h-12 w-12" /> Frontend
               {`FYI's branch`}
